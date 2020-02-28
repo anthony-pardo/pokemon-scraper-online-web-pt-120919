@@ -12,6 +12,11 @@ class Pokemon
     @@all << self
   end
   
+  def update
+    sql = "UPDATE pokemon SET name = ?, type = ? WHERE id = ?"
+    @db.execute(sql, self.name, self.type, self.id)
+  end
+  
   def self.save(name, type, db)
     sql = <<-SQL
       INSERT INTO pokemon (name, type)
