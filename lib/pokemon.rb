@@ -18,7 +18,6 @@ class Pokemon
   end
   
   def self.save(name, type, db)
-    if Pokemon.find
     sql = <<-SQL
       INSERT INTO pokemon (name, type)
       VALUES (?, ?)
@@ -33,6 +32,6 @@ class Pokemon
       WHERE id = ?
     SQL
     row = db.execute(sql, id)[0][0]
-    Pokemon.save()
+    Pokemon.new(id: nil, name: row[1], type: row[2], db: db)
   end
 end
