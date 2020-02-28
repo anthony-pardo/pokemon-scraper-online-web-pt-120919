@@ -31,7 +31,7 @@ class Pokemon
       SELECT * FROM pokemon
       WHERE id = ?
     SQL
-    row = db.execute(sql, id)
-    #Pokemon.new(id: id, name: row[1], type: row[2], db: db)
+    row = db.execute(sql, id)[0]
+    Pokemon.new(id: id, name: row[1], type: row[2], db: db)
   end
 end
