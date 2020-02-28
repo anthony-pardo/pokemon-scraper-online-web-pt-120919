@@ -11,4 +11,8 @@ class Pokemon
     @db = db 
     @@all << self
   end
+  
+  def save 
+    
+  end
 end
